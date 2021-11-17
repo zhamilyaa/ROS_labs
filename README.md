@@ -21,3 +21,5 @@ the any new incoming value is lower than the previous one.
 Joint Movement of Planar Robot 
 
 ![caption](https://github.com/zhamilyaa/ROS_labs/blob/master/test_joint/lab3_part1.mov)
+
+<video src='https://github.com/zhamilyaa/ROS_labs/blob/master/test_joint/lab3_part1.mov' width=180/>
