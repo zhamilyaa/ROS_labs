@@ -23,3 +23,7 @@ Joint Movement of Planar Robot
 ![caption](https://github.com/zhamilyaa/ROS_labs/blob/master/test_joint/lab3_part1.mov)
 
 <video src='https://github.com/zhamilyaa/ROS_labs/blob/master/test_joint/lab3_part1.mov' width=180/>
+
+
+https://user-images.githubusercontent.com/40009146/142288231-38abe949-54f2-4522-b43c-7d5f7af4eeac.mov
+
