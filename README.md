@@ -19,4 +19,5 @@ data to the joint of the planar robot. The node should send the command to move 
 the any new incoming value is lower than the previous one. 
 
 Joint Movement of Planar Robot 
-![alt text](https://github.com/zhamilyaa/ROS_labs/blob/master/test_joint/lab3_part1.mov)
+
+![caption](https://github.com/zhamilyaa/ROS_labs/blob/master/test_joint/lab3_part1.mov)
