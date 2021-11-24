@@ -52,4 +52,14 @@ https://user-images.githubusercontent.com/40009146/143324537-609ec2f8-4dcf-46e0-
 ![end_sin](https://user-images.githubusercontent.com/40009146/143324736-b7593ffc-8307-4d1a-8e39-38133a66419f.png)
 
 
+## LAB 4
 
+**TASK**: 1. Configure MoveIt library
+
+```
+sudo apt install ros-noetic-moveit
+```
+Steps to follow: 
+1. Create a new moveit_robot.urdf.xacro file in ~/CATKIN_WORKSPACE/src/ros_snake_robot/robot_description folder. 
+2. Copy the content of the  moveit_robot.xacro to new moveit_robot.urdf.xacro file. 
+3. ``` roslaunch moveit_setup_assistant setup_assistant.launch```
