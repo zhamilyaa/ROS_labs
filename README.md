@@ -20,7 +20,28 @@ the any new incoming value is lower than the previous one.
 
 Joint Movement of Planar Robot 
 
-lab3_part2_base_sin.mov
+
+### PART 2
+**TASK**: Get the step response (see example fig.1) of (you can create a node that will send a 
+square-wave function):  
+1. the joint at the base of the robot 
+
+https://user-images.githubusercontent.com/40009146/143324486-7c62110d-9d00-46c1-af9a-ae03b7df1f0d.mov
+
+2. the joint at the end-effector of the robot 
+
+https://user-images.githubusercontent.com/40009146/143324505-068d092e-0c0a-408f-8688-12ace2fe1a19.mov
+
+Get the sine-wave response of (you can create a node that will send a sine-wave 
+function):  
+3. the joint at the base of the robot 
+
+https://user-images.githubusercontent.com/40009146/143324526-d920c683-2617-4fff-882c-7120bd425913.mov
+
+4. the joint at the end-effector of the robot 
+
+https://user-images.githubusercontent.com/40009146/143324537-609ec2f8-4dcf-46e0-8b2e-e8a058d0f56d.mov
 
 
-## lab3_part2_base_sin.mov
+
+
