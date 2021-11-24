@@ -59,10 +59,10 @@ https://user-images.githubusercontent.com/40009146/143324537-609ec2f8-4dcf-46e0-
 ```
 sudo apt install ros-noetic-moveit
 ```
-Steps to follow: 
+Steps to follow to create your own moveit package: 
 1. Create a new moveit_robot.urdf.xacro file in ~/CATKIN_WORKSPACE/src/ros_snake_robot/robot_description folder. 
 2. Copy the content of the  moveit_robot.xacro to new moveit_robot.urdf.xacro file. 
-3. ``` roslaunch moveit_setup_assistant setup_assistant.launch```
+3. ``` roslaunch moveit_setup_assistant setup_assistant.launch``` (link for the moveit_setup_assistant tutorial https://ros-planning.github.io/moveit_tutorials/doc/setup_assistant/setup_assistant_tutorial.html)
 4. Press in the moveit_setup_assistant "Create New MoveIt Configuration Package" and browse moveit_robot.urdf.xacro that we created. 
 5. Click on the Self-Collisions pane selector on the left-hand side and click on the Generate Collision Matrix button.
 6. Click on the Planning Groups pane selector, click on Add Group, enter Group Name (and remember the name as you will need it furthermore, you can name it for example, "joint" or "base"), choose kdl_kinematics_plugin/KDLKinematicsPlugin as the kinematics solver, now, click on the Add Joints button, add m2m, joint2,4,6, then save. 
@@ -71,3 +71,12 @@ Steps to follow:
 9. Create new folder for your moveit package with '''mkdir ~/CATKIN_WORKSPACE/src/{moveit_package_name}''' in the Terminal.
 10. Choose path to your new package. Exit the assistant. 
 ***P.S. if you will want to change something in your package when opening moveit_setup_assistant again, you can choose "Edit Existing MoveIt Configuration Package"***
+
+To check if everything works well:
+```
+roslaunch {moveit_package_name} demo.launch
+```
+(link for the Rviz visualization tutorial https://ros-planning.github.io/moveit_tutorials/doc/quickstart_in_rviz/quickstart_in_rviz_tutorial.html)
+
+
+
