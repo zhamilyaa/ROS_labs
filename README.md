@@ -27,3 +27,7 @@ Joint Movement of Planar Robot
 
 https://user-images.githubusercontent.com/40009146/142288231-38abe949-54f2-4522-b43c-7d5f7af4eeac.mov
 
+lab3_part2_base_sin.mov
+
+
+## lab3_part2_base_sin.mov
