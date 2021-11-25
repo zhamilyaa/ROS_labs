@@ -104,9 +104,9 @@ Splitting into train and test.
         labels[i] = labels[i].strip('[ ').strip(' ]')
         train[i] = train[i].strip('(').strip(')')
         result = [float(val) for val in train[i].split(',')]
-        Y.append(result)
-        result = [float(val) for val in labels[i].split(' ')]
         X.append(result)
+        result = [float(val) for val in labels[i].split(' ')]
+        Y.append(result)
 
     X_train, X_test, y_train, y_test = train_test_split(np.asarray(X), np.asarray(Y), test_size=0.80)
 ```
@@ -121,9 +121,9 @@ def rmse(y_true, y_pred):
 Model
 ```
     model = Sequential()
-    model.add(Dense(10, input_dim =5, activation = 'relu'))
+    model.add(Dense(10, input_dim = 5, activation = 'relu'))
     model.add(Dense(16, activation = 'relu'))
-    model.add(Dense(2, activation='linear'))
+    model.add(Dense(3, activation='linear'))
     model.compile(loss=rmse, optimizer=Adam(0.01))
     print(model.summary())
 ```
@@ -191,12 +191,12 @@ Mean Squared Logarithmic Error showed the best results.
 
 ### CHANGING THE NUMBER OF LAYERS
 Layer number Mean Squared Logarithmic Error  
-2  --------> 0.000359  
-3 ---------> 0.088592  
-4 ---------> 0.088045  
-5 ---------> 0.088894  
-6 ---------> 0.000551  
-7 ---------> 0.000601  
+2 ------------> 0.000359  
+3 ------------> 0.088592  
+4 ------------> 0.088045  
+5 ------------> 0.088894  
+6 ------------> 0.000551  
+7 ------------> 0.000601  
 
 2 layers showed the best results.
 
@@ -257,10 +257,89 @@ Tanh showed the best results
 Mean Squared Logarithmic Error: 0.000215
 
 Dataset Size -> 10000
-Number of Layers -> 2
+Number of Hidden Layers -> 2
 Optimizer -> Adam
 Activation Function -> Tanh
 Loss -> Mean Squared Logarithmic Error
+Epochs -> 15
 
 ## LAB 7
+**TASK**: Obtain Inverse Kinematics without the robot model
 
+Importing libraries. 
+```
+import numpy as np
+from tensorflow import keras
+from keras.models import Sequential
+from keras.layers import Dense
+from keras import backend as K
+import pandas as pd
+from sklearn.model_selection import train_test_split
+```
+
+Reading generated csv file. 
+```
+def main():
+    data = pd.read_csv("/home/zhamilya/catkin_ws_zhamilya/dict1.csv", header = None, names = ["Angles", "XY"])
+    print(data.head(10))
+```
+![Screenshot from 2021-11-25 06-04-22](https://user-images.githubusercontent.com/40009146/143327639-f64b5749-79aa-4c91-b423-051940c4586b.png)
+
+Splitting into train and test. 
+
+```
+    train = data['Angles'].to_numpy()
+    labels = data['XY'].to_numpy()
+
+    X = list()
+    Y = list()
+    for i in range(len(train)):
+        labels[i] = labels[i].replace('     ', ' ')
+        labels[i] = labels[i].replace('   ', ' ')
+        labels[i] = labels[i].replace('  ', ' ')
+        labels[i] = labels[i].strip('[ ').strip(' ]')
+        train[i] = train[i].strip('(').strip(')')
+        result = [float(val) for val in train[i].split(',')]
+        Y.append(result)
+        result = [float(val) for val in labels[i].split(' ')]
+        X.append(result)
+
+    X_train, X_test, y_train, y_test = train_test_split(np.asarray(X), np.asarray(Y), test_size=0.80)
+```
+![Screenshot from 2021-11-25 06-09-07](https://user-images.githubusercontent.com/40009146/143327912-8e702cd5-7d1c-4a75-8acf-469c1f6a8352.png)
+
+
+Model
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =3, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(5, activation='linear'))
+    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+```
+Model Fitting
+
+```
+    model.fit(X_train, y_train, epochs = 200)
+    scores = model.evaluate(X_test, y_test, verbose=0) 
+    print("RMSE: %.2f" % (scores))
+```
+![Screenshot from 2021-11-25 07-01-55](https://user-images.githubusercontent.com/40009146/143334137-68505e5d-35e9-4726-9d96-b16f32907e27.png)
+
+### RESULTS
+
+Mean Squared Logarithmic Error: 0.015960
+
+Dataset Size -> 10000
+Number of Hidden Layers -> 2=8
+Optimizer -> Adam
+Activation Function -> Tanh
+Loss -> Mean Squared Logarithmic Error
+Epochs -> 200
