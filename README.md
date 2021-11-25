@@ -258,14 +258,14 @@ Tanh showed the best results
 
 ### RESULTS
 
-Mean Squared Logarithmic Error: 0.000215
+Mean Squared Logarithmic Error: 0.000215  
 
-Dataset Size -> 10000
-Number of Hidden Layers -> 2
-Optimizer -> Adam
-Activation Function -> Tanh
-Loss -> Mean Squared Logarithmic Error
-Epochs -> 15
+Dataset Size -> 10000   
+Number of Hidden Layers -> 2   
+Optimizer -> Adam   
+Activation Function -> Tanh   
+Loss -> Mean Squared Logarithmic Error   
+Epochs -> 15   
 
 ## LAB 7
 **TASK**: Obtain Inverse Kinematics without the robot model
@@ -345,9 +345,9 @@ Model Fitting
 
 Mean Squared Logarithmic Error: 0.015960
 
-Dataset Size -> 10000
-Number of Hidden Layers -> 2=8
-Optimizer -> Adam
-Activation Function -> Tanh
-Loss -> Mean Squared Logarithmic Error
-Epochs -> 200
+Dataset Size -> 10000  
+Number of Hidden Layers -> 8  
+Optimizer -> Adam  
+Activation Function -> Tanh  
+Loss -> Mean Squared Logarithmic Error  
+Epochs -> 200  
