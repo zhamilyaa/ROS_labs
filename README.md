@@ -109,6 +109,10 @@ Splitting into train and test.
         Y.append(result)
 
     X_train, X_test, y_train, y_test = train_test_split(np.asarray(X), np.asarray(Y), test_size=0.80)
+    print("TRAIN X SHAPE ", np.shape(X_train))
+    print("TRAIN Y SHAPE ", np.shape(y_train))
+    print("TEST X SHAPE ", np.shape(X_test))
+    print("TEST Y SHAPE ", np.shape(y_test))
 ```
 ![Screenshot from 2021-11-25 06-09-07](https://user-images.githubusercontent.com/40009146/143327912-8e702cd5-7d1c-4a75-8acf-469c1f6a8352.png)
 
@@ -305,8 +309,12 @@ Splitting into train and test.
         X.append(result)
 
     X_train, X_test, y_train, y_test = train_test_split(np.asarray(X), np.asarray(Y), test_size=0.80)
+    print("TRAIN X SHAPE ", np.shape(X_train))
+    print("TRAIN Y SHAPE ", np.shape(y_train))
+    print("TEST X SHAPE ", np.shape(X_test))
+    print("TEST Y SHAPE ", np.shape(y_test))
 ```
-![Screenshot from 2021-11-25 06-09-07](https://user-images.githubusercontent.com/40009146/143327912-8e702cd5-7d1c-4a75-8acf-469c1f6a8352.png)
+![Screenshot from 2021-11-25 07-09-55](https://user-images.githubusercontent.com/40009146/143334271-5b070d3d-aea8-4d87-91f1-fe1abbd6d2e9.png)
 
 
 Model
