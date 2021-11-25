@@ -68,6 +68,8 @@ My MoveIt package is called "lab4".
 
 ## LAB 6
 
+**TASK**: Obtain Forward Kinematics without the robot model
+
 Importing libraries. 
 ```
 import numpy as np
@@ -108,15 +110,157 @@ Splitting into train and test.
 
     X_train, X_test, y_train, y_test = train_test_split(np.asarray(X), np.asarray(Y), test_size=0.80)
 ```
-TRAIN X SHAPE  (2000, 5)
-TRAIN Y SHAPE  (2000, 3)
-TEST X SHAPE  (8001, 5)
-TEST Y SHAPE  (8001, 3)
+![Screenshot from 2021-11-25 06-09-07](https://user-images.githubusercontent.com/40009146/143327912-8e702cd5-7d1c-4a75-8acf-469c1f6a8352.png)
 
+Loss Function: Root Mean Square
 ```
 def rmse(y_true, y_pred):
         return K.sqrt(K.mean(K.square(y_pred - y_true)))
 ```
+
+Model
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'relu'))
+    model.add(Dense(16, activation = 'relu'))
+    model.add(Dense(2, activation='linear'))
+    model.compile(loss=rmse, optimizer=Adam(0.01))
+    print(model.summary())
+```
+![Screenshot from 2021-11-25 06-13-26](https://user-images.githubusercontent.com/40009146/143328099-817f5497-826d-491f-a2d0-c924a4166a02.png)
+
+
+```
+    model.fit(X_train, y_train, epochs = 15)
+    scores = model.evaluate(X_test, y_test, verbose=0) 
+    print("RMSE: %.2f" % (scores))
+```
+RMSE: 0.10
+
+### CHANGING THE LOSSES
+1. Mean Squared Logarithmic Error
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'relu'))
+    model.add(Dense(16, activation = 'relu'))
+    model.add(Dense(3, activation='linear'))
+    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+
+```
+```
+mean_squared_logarithmic_error 0.0005
+```
+3. Mean Absolute Error
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'relu'))
+    model.add(Dense(16, activation = 'relu'))
+    model.add(Dense(3, activation='linear'))
+    model.compile(loss='mean_absolute_error', optimizer=keras.optimizers.Adam(0.01))
+
+```
+```
+mean_absolute_error 0.0331
+```
+
+2. Mean Squared Error
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'relu'))
+    model.add(Dense(16, activation = 'relu'))
+    model.add(Dense(3, activation='linear'))
+    model.compile(loss='mean_squared_error', optimizer=keras.optimizers.Adam(0.01))
+
+```
+```
+mean_squared_error 0.0036
+```
+4. Root Mean Squared Error
+
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'relu'))
+    model.add(Dense(16, activation = 'relu'))
+    model.add(Dense(3, activation='linear'))
+    model.compile(loss=rmse, optimizer=keras.optimizers.Adam(0.01))
+```
+```
+rmse 0.0508
+```
+Mean Squared Logarithmic Error showed the best results.
+
+### CHANGING THE NUMBER OF LAYERS
+Layer number Mean Squared Logarithmic Error
+2  --------> 0.000359
+3 ---------> 0.088592
+4 ---------> 0.088045
+5 ---------> 0.088894
+6 ---------> 0.000551
+7 ---------> 0.000601
+
+2 layers showed the best results.
+
+### CHANGING THE ACTIVATION FUNCTIONS
+
+1. Tanh
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(3, activation='linear'))
+    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+```
+```
+0.000215
+```
+2. Sigmoid
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'sigmoid'))
+    model.add(Dense(16, activation = 'sigmoid'))
+    model.add(Dense(16, activation = 'sigmoid'))
+    model.add(Dense(3, activation='linear'))
+    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+```
+```
+0.017334
+```
+3. Linear
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'linear'))
+    model.add(Dense(16, activation = 'linear'))
+    model.add(Dense(16, activation = 'linear'))
+    model.add(Dense(3, activation='linear'))
+    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+```
+```
+0.002832
+```
+4. Softmax
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =5, activation = 'softmax'))
+    model.add(Dense(16, activation = 'softmax'))
+    model.add(Dense(16, activation = 'softmax'))
+    model.add(Dense(3, activation='linear'))
+    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+```
+```
+0.019299
+```
+Tanh showed the best results
+
+### RESULTS
+
+Mean Squared Logarithmic Error: 0.000215
+
+Dataset Size -> 10000
+Number of Layers -> 2
+Optimizer -> Adam
+Activation Function -> Tanh
+Loss -> Mean Squared Logarithmic Error
 
 ## LAB 7
 
