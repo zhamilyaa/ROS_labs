@@ -56,27 +56,67 @@ https://user-images.githubusercontent.com/40009146/143324537-609ec2f8-4dcf-46e0-
 
 **TASK**: 1. Configure MoveIt library
 
-```
-sudo apt install ros-noetic-moveit
-```
-Steps to follow to create your own moveit package: 
-1. Create a new moveit_robot.urdf.xacro file in ~/CATKIN_WORKSPACE/src/ros_snake_robot/robot_description folder. 
-2. Copy the content of the  moveit_robot.xacro to new moveit_robot.urdf.xacro file. 
-3. ``` roslaunch moveit_setup_assistant setup_assistant.launch``` (link for the moveit_setup_assistant tutorial https://ros-planning.github.io/moveit_tutorials/doc/setup_assistant/setup_assistant_tutorial.html)
-4. Press in the moveit_setup_assistant "Create New MoveIt Configuration Package" and browse moveit_robot.urdf.xacro that we created. 
-5. Click on the Self-Collisions pane selector on the left-hand side and click on the Generate Collision Matrix button.
-6. Click on the Planning Groups pane selector, click on Add Group, enter Group Name (and remember the name as you will need it furthermore, you can name it for example, "joint" or "base"), choose kdl_kinematics_plugin/KDLKinematicsPlugin as the kinematics solver, now, click on the Add Joints button, add m2m, joint2,4,6, then save. 
-7. Add group with new name (for instance, "end"), again choose kdl_kinematics_plugin/KDLKinematicsPlugin as the kinematics solver, click on the Add Joints button, add the last joint - "end". 
-8. Fill in the Author Information.
-9. Create new folder for your moveit package with '''mkdir ~/CATKIN_WORKSPACE/src/{moveit_package_name}''' in the Terminal.
-10. Choose path to your new package. Exit the assistant. 
-***P.S. if you will want to change something in your package when opening moveit_setup_assistant again, you can choose "Edit Existing MoveIt Configuration Package"***
+My MoveIt package is called "lab4". 
 
-To check if everything works well:
-```
-roslaunch {moveit_package_name} demo.launch
-```
-(link for the Rviz visualization tutorial https://ros-planning.github.io/moveit_tutorials/doc/quickstart_in_rviz/quickstart_in_rviz_tutorial.html)
+2. Create a node moves the “end” by 1.4 (in rviz units mm or m) along X axis
 
+3. Create a node that moves “end” to Draw a rectangle
 
+4. Create a node that moves “end” to Draw a circle
+
+## LAB 5
+
+## LAB 6
+
+Importing libraries. 
+```
+import numpy as np
+from tensorflow import keras
+from keras.models import Sequential
+from keras.layers import Dense
+from keras import backend as K
+import pandas as pd
+from sklearn.model_selection import train_test_split
+```
+
+Reading generated csv file. 
+```
+def main():
+    data = pd.read_csv("/home/zhamilya/catkin_ws_zhamilya/dict1.csv", header = None, names = ["Angles", "XY"])
+    print(data.head(10))
+```
+![Screenshot from 2021-11-25 06-04-22](https://user-images.githubusercontent.com/40009146/143327639-f64b5749-79aa-4c91-b423-051940c4586b.png)
+
+Splitting into train and test. 
+
+```
+    train = data['Angles'].to_numpy()
+    labels = data['XY'].to_numpy()
+
+    X = list()
+    Y = list()
+    for i in range(len(train)):
+        labels[i] = labels[i].replace('     ', ' ')
+        labels[i] = labels[i].replace('   ', ' ')
+        labels[i] = labels[i].replace('  ', ' ')
+        labels[i] = labels[i].strip('[ ').strip(' ]')
+        train[i] = train[i].strip('(').strip(')')
+        result = [float(val) for val in train[i].split(',')]
+        Y.append(result)
+        result = [float(val) for val in labels[i].split(' ')]
+        X.append(result)
+
+    X_train, X_test, y_train, y_test = train_test_split(np.asarray(X), np.asarray(Y), test_size=0.80)
+```
+TRAIN X SHAPE  (2000, 5)
+TRAIN Y SHAPE  (2000, 3)
+TEST X SHAPE  (8001, 5)
+TEST Y SHAPE  (8001, 3)
+
+```
+def rmse(y_true, y_pred):
+        return K.sqrt(K.mean(K.square(y_pred - y_true)))
+```
+
+## LAB 7
 
