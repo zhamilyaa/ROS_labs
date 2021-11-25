@@ -190,7 +190,7 @@ rmse 0.0508
 Mean Squared Logarithmic Error showed the best results.
 
 ### CHANGING THE NUMBER OF LAYERS
-Layer number Mean Squared Logarithmic Error
+Layer number Mean Squared Logarithmic Error  
 2  --------> 0.000359  
 3 ---------> 0.088592  
 4 ---------> 0.088045  
