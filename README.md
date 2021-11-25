@@ -20,6 +20,8 @@ the any new incoming value is lower than the previous one.
 
 Joint Movement of Planar Robot 
 
+https://user-images.githubusercontent.com/40009146/143334838-46552277-8d4a-4bcc-a4c1-ead42a228435.mov
+
 
 ### PART 2
 **TASK**: Get the step response of (you can create a node that will send a 
