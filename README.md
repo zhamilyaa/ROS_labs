@@ -61,6 +61,8 @@ https://user-images.githubusercontent.com/40009146/143324537-609ec2f8-4dcf-46e0-
 My MoveIt package is called "lab4". 
 
 2. Create a node moves the “end” by 1.4 (in rviz units mm or m) along X axis
+
+File to run is located in scripts/src/test.cpp
 ```
 rosrun scripts test_test
 ```
@@ -70,6 +72,7 @@ https://user-images.githubusercontent.com/40009146/143573960-956a1310-ec5d-4f1a-
 
 
 3. Create a node that moves “end” to Draw a rectangle
+File to run is located in scripts/src/test_rectangle.cpp
 
 ```
 rosrun scripts test_rect
@@ -83,6 +86,8 @@ https://user-images.githubusercontent.com/40009146/143570345-b3cd5076-ceab-453a-
 ## LAB 6
 
 **TASK**: Obtain Forward Kinematics without the robot model
+
+Dataset is located in scripts/src/dict1.csv. Dataset was obtained by scripts/src/dataset.py
 
 Importing libraries. 
 ```
