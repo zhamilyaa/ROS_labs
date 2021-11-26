@@ -61,10 +61,22 @@ https://user-images.githubusercontent.com/40009146/143324537-609ec2f8-4dcf-46e0-
 My MoveIt package is called "lab4". 
 
 2. Create a node moves the “end” by 1.4 (in rviz units mm or m) along X axis
+```
+rosrun scripts test_test
+```
+
+
+https://user-images.githubusercontent.com/40009146/143573960-956a1310-ec5d-4f1a-a00f-e942235f4656.mov
+
 
 3. Create a node that moves “end” to Draw a rectangle
 
-4. Create a node that moves “end” to Draw a circle
+```
+rosrun scripts test_rect
+```
+
+https://user-images.githubusercontent.com/40009146/143570345-b3cd5076-ceab-453a-9853-a58260c6110f.mov
+
 
 ## LAB 5
 
