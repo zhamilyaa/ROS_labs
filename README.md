@@ -133,7 +133,8 @@ Splitting into train and test.
     print("TEST X SHAPE ", np.shape(X_test))
     print("TEST Y SHAPE ", np.shape(y_test))
 ```
-![Screenshot from 2021-11-25 06-09-07](https://user-images.githubusercontent.com/40009146/143327912-8e702cd5-7d1c-4a75-8acf-469c1f6a8352.png)
+![Screenshot from 2021-11-27 18-23-17](https://user-images.githubusercontent.com/40009146/143681173-6690c65c-6705-4847-a634-ec8c6720d884.png)
+
 
 Loss Function: Root Mean Square
 ```
