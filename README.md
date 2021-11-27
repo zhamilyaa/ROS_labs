@@ -277,7 +277,10 @@ Tanh showed the best results
 
 ### RESULTS
 
-Mean Squared Logarithmic Error: 0.000215  
+![Screenshot from 2021-11-27 18-19-16](https://user-images.githubusercontent.com/40009146/143681128-ed2cf848-3314-476d-b36d-5ff0087d8756.png)
+
+
+Mean Squared Logarithmic Error: 0.000190  
 
 Dataset Size -> 10000   
 Number of Hidden Layers -> 2   
