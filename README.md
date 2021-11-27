@@ -235,7 +235,7 @@ Layer number Mean Squared Logarithmic Error
     model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
 ```
 ```
-0.000215
+0.000190
 ```
 2. Sigmoid
 ```
