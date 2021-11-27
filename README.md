@@ -343,17 +343,10 @@ Splitting into train and test.
 Model
 ```
     model = Sequential()
-    model.add(Dense(10, input_dim =3, activation = 'tanh'))
-    model.add(Dense(16, activation = 'tanh'))
-    model.add(Dense(16, activation = 'tanh'))
-    model.add(Dense(16, activation = 'tanh'))
-    model.add(Dense(16, activation = 'tanh'))
-    model.add(Dense(16, activation = 'tanh'))
-    model.add(Dense(16, activation = 'tanh'))
-    model.add(Dense(16, activation = 'tanh'))
-    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(10, input_dim =3, activation = 'relu'))
+    model.add(Dense(16, activation = 'relu'))
     model.add(Dense(5, activation='linear'))
-    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+    model.compile(loss=rmse, optimizer=keras.optimizers.Adam(0.01))
 ```
 Model Fitting
 
@@ -362,14 +355,80 @@ Model Fitting
     scores = model.evaluate(X_test, y_test, verbose=0) 
     print("RMSE: %.2f" % (scores))
 ```
-![Screenshot from 2021-11-25 07-01-55](https://user-images.githubusercontent.com/40009146/143334137-68505e5d-35e9-4726-9d96-b16f32907e27.png)
+```
+0.259730
+```
+
+### CHANGE THE LOSS FUNCTION TO MSLE
+Model
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =3, activation = 'relu'))
+    model.add(Dense(16, activation = 'relu'))
+    model.add(Dense(5, activation='linear'))
+    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+```
+```
+0.01889
+```
+
+### INCRERASE NUMBER OF LAYERS
+```
+# 2 ------------> mean_squared_logarithmic_error: 0.022235   
+# 3 ------------> mean_squared_logarithmic_error: 0.015986   
+# 4 ------------> mean_squared_logarithmic_error: 0.022250   
+# 5 ------------> mean_squared_logarithmic_error: 0.015907   
+# 6 ------------> mean_squared_logarithmic_error: 0.015879   
+# 7 ------------> mean_squared_logarithmic_error: 0.018899   
+# 8 ------------> mean_squared_logarithmic_error: 0.018779   
+# 9 ------------> mean_squared_logarithmic_error: 0.018794   
+# 10 -----------> mean_squared_logarithmic_error: 0.018883   
+```
+
+```
+0.015907
+```
+The best performance showed the 5 hidden layers.
+
+### CHANGE THE ACTIVATION FUNCTION TO TANH
+
+```
+    model = Sequential()
+    model.add(Dense(10, input_dim =3, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+    model.add(Dense(16, activation = 'tanh'))
+
+    model.add(Dense(5, activation='linear'))
+    model.compile(loss='mean_squared_logarithmic_error', optimizer=keras.optimizers.Adam(0.01))
+```
+```
+0.015924
+```
+![tanh_lr_0 001](https://user-images.githubusercontent.com/40009146/143719427-4212abe6-1cb1-4c46-83fa-d10f6a703c54.png)
+
+![Figure_tanh_15_lrdefault](https://user-images.githubusercontent.com/40009146/143719443-2b53b3f1-c557-4703-8db4-2637103baff6.png)
+
+### CHANGE THE EPOCH SIZE TO 200
+```
+0.015749
+```
+
+![Screenshot from 2021-11-27 19-16-20](https://user-images.githubusercontent.com/40009146/143719432-182c5ef8-f9c3-485d-8c8c-63b963ea6681.png)
+
+![epoch200](https://user-images.githubusercontent.com/40009146/143719437-cc244291-2cb7-43c7-8543-bf9a452f3832.png)
+
+
 
 ### RESULTS
 
-Mean Squared Logarithmic Error: 0.015960
+Mean Squared Logarithmic Error: 0.015749
 
 Dataset Size -> 10000  
-Number of Hidden Layers -> 8  
+Number of Hidden Layers -> 5 
 Optimizer -> Adam  
 Activation Function -> Tanh  
 Loss -> Mean Squared Logarithmic Error  
