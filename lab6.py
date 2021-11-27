@@ -4,6 +4,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from keras import backend as K
 
 def main():
     data = pd.read_csv("./dict1.csv", header = None, names = ["Angles", "XY"])
@@ -31,12 +32,10 @@ def main():
     print("TRAIN Y SHAPE ", np.shape(y_train))
     print("TEST X SHAPE ", np.shape(X_test))
     print("TEST Y SHAPE ", np.shape(y_test))
+    
+    def rmse(y_true, y_pred):
+        return K.sqrt(K.mean(K.square(y_pred-y_true)))
 
-
-    print(np.shape(X_train))
-    print(np.shape(y_train))
-    print(np.shape(X_test))
-    print(np.shape(y_test))
 
     model = Sequential()
     model.add(Dense(10, input_dim =5, activation = 'tanh'))
