@@ -78,10 +78,20 @@ File to run is located in scripts/src/test_rectangle.cpp
 rosrun scripts test_rect
 ```
 
-https://user-images.githubusercontent.com/40009146/143570345-b3cd5076-ceab-453a-9853-a58260c6110f.mov
+
+https://user-images.githubusercontent.com/40009146/143785570-eea98dd4-4081-48ca-a7c1-4d1b6e0c329c.mov
+
+
 
 
 ## LAB 5
+
+**TASK**: Using rosbag Record the joint angles and the position of the end- effector in x- and y-axes.
+
+![untitled](https://user-images.githubusercontent.com/40009146/143785612-94d4630e-f441-49ee-a5a9-5f171b0a1870.jpg)
+
+![cos](https://user-images.githubusercontent.com/40009146/143785616-cd11c106-82b4-4a92-9dab-783e383b95f9.jpg)
+
 
 ## LAB 6
 
