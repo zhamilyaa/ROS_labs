@@ -208,14 +208,8 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(test_x src/test_along_x.cpp)
-target_link_libraries(test_x ${catkin_LIBRARIES})
-
 add_executable(test_test src/test.cpp)
 target_link_libraries(test_test ${catkin_LIBRARIES})
 
 add_executable(test_rect src/test_rectangle.cpp)
 target_link_libraries(test_rect ${catkin_LIBRARIES})
-
-add_executable(test_circle src/test_circle.cpp)
-target_link_libraries(test_circle ${catkin_LIBRARIES})
