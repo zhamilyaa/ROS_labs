@@ -88,6 +88,8 @@ https://user-images.githubusercontent.com/40009146/143785570-eea98dd4-4081-48ca-
 
 **TASK**: Using rosbag Record the joint angles and the position of the end- effector in x- and y-axes.
 
+/scripts/src/salem.csv
+
 ![untitled](https://user-images.githubusercontent.com/40009146/143785612-94d4630e-f441-49ee-a5a9-5f171b0a1870.jpg)
 
 ![cos](https://user-images.githubusercontent.com/40009146/143785616-cd11c106-82b4-4a92-9dab-783e383b95f9.jpg)
